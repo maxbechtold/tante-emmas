@@ -1,0 +1,27 @@
+.reveal {
+   font-size: 28px;
+}
+
+.reveal code {
+  color:grey;
+}
+
+.reveal code.hljs {
+  font-size: 0.8em;
+}
+
+.reveal .footnote {
+	text-align:left;
+}
+
+.reveal .tests-red {
+	color:red;
+}
+
+.reveal .tests-yellow {
+    color:orange;
+}
+
+.reveal .tests-green {
+    color:green;
+}

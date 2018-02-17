@@ -15,4 +15,7 @@ public class Customer {
 		this.notCreditable = false;
 	}
 	
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
