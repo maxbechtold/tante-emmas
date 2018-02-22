@@ -43,9 +43,11 @@ public class PriceCalculator {
 		}
 		boolean netPrice = customer.name.equals("Gerd Grosskunde");
 		boolean fairPrice = computeFairPrice(customer);
+
 		Daytime daytime = daytimeSource.getDaytime();
 		Date date = dateSource.getDate();
 		Weather weather = weatherSource.getWeather();
+
 		price = applyUnfairCharges(fairPrice, price, product, daytime, date, weather);
 		if (netPrice) {
 			price = price.divide(BigDecimal.valueOf(119, 2), RoundingMode.HALF_UP);
@@ -58,8 +60,8 @@ public class PriceCalculator {
 			@SuppressWarnings("unchecked")
 			Set<String> categories = (Set<String>) product.getOrDefault("categories", emptySet());
 			if (categories.contains("rainwear")
-					&& (weather.getPrecipitation().equals(Precipitation.DRIZZLE) || weather.getPrecipitation().equals(Precipitation.RAIN))
-					|| date.getSeason() == Season.FALL) {
+				&& (weather.getPrecipitation().equals(Precipitation.DRIZZLE) || weather.getPrecipitation().equals(Precipitation.RAIN))
+				|| date.getSeason() == Season.FALL) {
 				price = price.multiply(BigDecimal.valueOf(102, 2));
 				product.put("bad circumstances", true);
 			}
@@ -108,10 +110,10 @@ public class PriceCalculator {
 		return fairPrice;
 	}
 
-	public void order(Map<String, Object> product) {
+	public void order(String orderDate, Map<String, Object> product) {
 		BigDecimal price = computePrice(product);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("orders.txt", true))) {
-			writer.write(customer.name + " " + product.get("name") + ": " + price);
+			writer.write(orderDate + " " + customer.name + " " + product.get("name") + ": " + price);
 			writer.newLine();
 		} catch (IOException e) {
 			throw new RuntimeException(e);

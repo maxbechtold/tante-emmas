@@ -1,3 +1,12 @@
+<!-- .slide: class="title" -->
+
+# Testrecorder
+## Record - Refactor - Replay
+
+<div class="speaker">Max Bechtold, Stefan Mandel</div>
+
+---
+
 # Get Familiar
 ## 10 min
 
@@ -31,9 +40,9 @@
 ----
 
 * Modify the launch script by adding  `-javaagent:testrecorder-0.3.12-jar-with-dependencies.jar=net.amygdalum.tanteemmas.testrecorder.AgentConfig`
-    * eclipse: run configurations -> TanteEmmas -> Arguments -> Vm Arguments
-    * intellij: run -> edit configurations -> tante-emmas -> Vm Options
-    * shell: 
+  * eclipse: run configurations -> TanteEmmas -> Arguments -> Vm Arguments
+  * intellij: run -> edit configurations -> tante-emmas -> Vm Options
+  * shell: 
     ```Bash
     java
       -cp [classpath]
@@ -44,9 +53,9 @@
 ----
 
 * Start the launch script
-    * if the message `loading AgentConfig` appears => everything ok
-    * else if the message `loading default config` appears => agent has been loaded but configuration not found (maybe AgentConfig is not in the correct package or the run script references a different config)
-    * else => agent has not been loaded => adjust the path to the testrecorder.jar
+  * if the message `loading AgentConfig` appears => everything ok
+  * else if the message `loading default config` appears => agent has been loaded but configuration not found (maybe AgentConfig is not in the correct package or the run script references a different config)
+  * else => agent has not been loaded => adjust the path to the testrecorder.jar
 * Stop the application
 
 ---
@@ -56,8 +65,8 @@
 
 * Annotate `PriceCalculator.computeFairPrice` with `@Recorded`
 * Start the launch script, the messages should be:
-    * `loading AgentConfig`
-    * `recording snapshots of ...`
+  * `loading AgentConfig`
+  * `recording snapshots of ...`
 * Browse to http://localhost:8080
 
 ----
@@ -90,8 +99,8 @@
 
 * Annotate `PriceCalculator.applyUnfairCharges` with `@Recorded`
 * Start the launch script, the messages should be:
-    * `loading AgentConfig`
-    * `recording snapshots of ...`
+  * `loading AgentConfig`
+  * `recording snapshots of ...`
 * Browse to http://localhost:8080
 
 ----
@@ -127,8 +136,8 @@
 
 * Annotate `PriceCalculator.computePrice` with `@Recorded`
 * Start the launch script, the messages should be:
-    * `loading AgentConfig`
-    * `recording snapshots of ...`
+  * `loading AgentConfig`
+  * `recording snapshots of ...`
 * Browse to http://localhost:8080
 
 ----
@@ -176,8 +185,8 @@
 
 * Annotate `PriceCalculator.order` with `@Recorded`
 * Start the launch script, the messages should be:
-    * `loading AgentConfig`
-    * `recording snapshots of ...`
+  * `loading AgentConfig`
+  * `recording snapshots of ...`
 * Browse to http://localhost:8080
 
 ----
@@ -227,21 +236,51 @@
 ## 15 min
 
 * maybe you have already found some nasty parts of the code
-    * the customer/tester feels that a single rainy day increases the average price of all products for all time after
-    * a tester mentioned that some event seems to modify the properties of all products
+  * the customer/tester feels that a single rainy day increases the average price of all products for all time after
+  * a tester mentioned that some event seems to modify the properties of all products
 * find the variable that represents the product
 * find changes to the product that correspond to the customers/testers experiences
 
 ----
 
 * now we fix this bug test-driven
-    * correct the tests that expect a behavior that is not expected by the customer/tester
-    * <div class="tests-red">these tests should turn red</div>
-    * then fix the code
-    * <div class="tests-green">these tests should turn green</div>
+  * correct the tests that expect a behavior that is not expected by the customer/tester
+  * <div class="tests-red">these tests should turn red</div>
+  * then fix the code
+  * <div class="tests-green">these tests should turn green</div>
 
 ----
 
 * for sure - execute the other tests in your generated suite
-    * <div class="tests-green">if you worked truely diligent (or your test suite was quite small) all tests are green</div>
-    * <div class="tests-red">otherwise assume that you did work rather effective than diligent - but try to explain why other test do fail now</div>  
+  * <div class="tests-green">if you worked truely diligent (or your test suite was quite small) all tests are green</div>
+  * <div class="tests-red">otherwise assume that you did work rather effective than diligent - but try to explain why other test do fail now</div>
+
+---
+
+# Feel free to use or contribute
+
+* http://testrecorder.amygdalum.net, you will find:
+  * a manual for configuration
+  * a manual how to record methods and objects (with or without agent)
+
+----
+
+* State of Development
+  * api will be quite volatile a long while
+  * there are some hard objects that are not yet supported (especially native state or concurrency state)
+  * there are probably some scenarios that do not work yet (please report them)
+
+----
+
+* Promise of Quality
+  * there are many tests and many assertions (coverage > 90%)
+  * each reported and verified issue will be assigned at least one reproducing test
+
+----
+
+* Contributions and feedback are welcome
+  * https://github.com/almondtools/testrecorder
+
+---
+
+# Thank you!

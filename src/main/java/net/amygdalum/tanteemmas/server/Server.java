@@ -1,7 +1,9 @@
 package net.amygdalum.tanteemmas.server;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +85,8 @@ public class Server extends AbstractVerticle {
 		PriceCalculator prices = new PriceCalculator(date, daytime, weather);
 		String name = context.request().getParam("product");
 		Map<String, Object> product = products.getProduct(name);
-		prices.order(product);
+		String date = DateFormat.getInstance().format(new Date(time.millis()));
+		prices.order(date, product);
 		context.reroute("/prices");
 	}
 
