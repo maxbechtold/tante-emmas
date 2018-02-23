@@ -198,8 +198,8 @@
 ----
 
 * <div class="tests-green">The tests are green</div>
-* Change some arguments of the tested method (in the tests) and run the tests again
-* <div class="tests-green">Astonishingly the tests are green</div>
+* Change the timestamp argument in some of your tests
+* <div class="tests-green">Astonishingly the tests stay green</div>
 * You see: This green state is treacherous
 * Analyze what the recorded method does and analyze which aspects of the method were not recorded
 
@@ -227,7 +227,7 @@
 * Start the launch script and browse to http://localhost:8080
 * While navigating through the application watch the generated tests
 * <div class="tests-green">The tests should work</div>
-* Now again change the arguments of the tested method
+* Now again change the timestamp argument of the tested method
 * <div class="tests-red">The tests should turn red</div>
 
 ---
