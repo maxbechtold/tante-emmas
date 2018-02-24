@@ -1,12 +1,3 @@
-<!-- .slide: class="title" -->
-
-# Testrecorder
-## Record - Refactor - Replay
-
-<div class="speaker">Max Bechtold, Stefan Mandel</div>
-
----
-
 # Get Familiar
 ## 10 min
 
@@ -254,33 +245,3 @@
 * for sure - execute the other tests in your generated suite
   * <div class="tests-green">if you worked truely diligent (or your test suite was quite small) all tests are green</div>
   * <div class="tests-red">otherwise assume that you did work rather effective than diligent - but try to explain why other test do fail now</div>
-
----
-
-# Feel free to use or contribute
-
-* http://testrecorder.amygdalum.net, you will find:
-  * a manual for configuration
-  * a manual how to record methods and objects (with or without agent)
-
-----
-
-* State of Development
-  * api will be quite volatile a long while
-  * there are some hard objects that are not yet supported (especially native state or concurrency state)
-  * there are probably some scenarios that do not work yet (please report them)
-
-----
-
-* Promise of Quality
-  * there are many tests and many assertions (coverage > 90%)
-  * each reported and verified issue will be assigned at least one reproducing test
-
-----
-
-* Contributions and feedback are welcome
-  * https://github.com/almondtools/testrecorder
-
----
-
-# Thank you!
