@@ -18,9 +18,9 @@
 * The sources are available
   * as clone from https://github.com/almondtools/tante-emmas.git
   * as project from the provided USB stick
-* The workshop script (tasks.md) is available
-  * as github page from <TODO>
-  * as static website from the provided USB stick
+* The workshop script (tasks.pdf) is available
+  * in the src/hints directory
+  * or as additional file from the provided USB-stick
 * There are two different setups
   * install the project from maven `mvn clean install -Poffline`
   * or copy all depedencies from the provided USB stick 
