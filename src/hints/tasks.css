@@ -2,6 +2,10 @@
    font-size: 28px;
 }
 
+.reveal pre {
+  width: 100%;
+}
+
 .reveal code {
   color:grey;
 }

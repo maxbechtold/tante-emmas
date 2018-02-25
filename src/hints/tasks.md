@@ -2,19 +2,28 @@
 ## 10 min
 
 * Start the launchscript
-    * eclipse: TanteEmmas.launch
-    * intellij: tante_emmas.xml -> .idea/runConfigurations
-    * other: `java -cp [classpath] io.vertx.core.Launcher run net.amygdalum.tanteemmas.server.Server`
+  * eclipse: TanteEmmas.launch
+  * intellij: tante_emmas.xml -> .idea/runConfigurations
+  * other: 
+
+```Bash
+java 
+  -cp [classpath] 
+  io.vertx.core.Launcher run net.amygdalum.tanteemmas.server.Server
+```
+
 * Browse to http://localhost:8080
 * Navigate through the application
 * Explore the source code
+ 
 
 ----
 
-## Some Hints ...
+## And now some hints:
 
-* Be sure that the previous server (Vert.x) was stopped before starting a server again (otherwise you might be testing on an old server)
-* Each recording run will replace existing recorded files. So if you want to keep old files, put them in a separate package before starting a new recording session
+* Stop the previous server (Vert.x) before starting a new server (you will possibly not recognize that you run on an old server session)
+* Save all tests you want to keep. Each recorder session will replace existing files
+* Delete all tests before starting a new server. Otherwise you cannot distinguish old recorded and new recorded files
 * Read the javadocs for the used annotations. They will give you further hints you to accomplish succesful recordings
 * Do not rely on few tests, about 100 tests will produce an acceptable coverage  
 
@@ -30,16 +39,22 @@
 
 ----
 
-* Modify the launch script by adding  `-javaagent:testrecorder-0.3.12-jar-with-dependencies.jar=net.amygdalum.tanteemmas.testrecorder.AgentConfig`
+* Modify the launch script by adding  
+
+```Bash
+-javaagent:testrecorder-0.3.12-jar-with-dependencies.jar=net.amygdalum.tanteemmas.testrecorder.AgentConfig
+```
+
   * eclipse: run configurations -> TanteEmmas -> Arguments -> Vm Arguments
   * intellij: run -> edit configurations -> tante-emmas -> Vm Options
   * shell: 
-    ```Bash
-    java
-      -cp [classpath]
-      -javaagent:[...]
-      io.vertx.core.Launcher run net.amygdalum.tanteemmas.server.Server
-    ```
+
+```Bash
+java
+  -cp [classpath]
+  -javaagent:testrecorder-0.3.12-jar-with-dependencies.jar=net.amygdalum.tanteemmas.testrecorder.AgentConfig
+  io.vertx.core.Launcher run net.amygdalum.tanteemmas.server.Server
+```
 
 ----
 
@@ -56,12 +71,14 @@
 
 * Annotate `PriceCalculator.computeFairPrice` with `@Recorded`
 * Start the launch script, the messages should be:
-  * `loading AgentConfig`
-  * `recording snapshots of ...`
-* Browse to http://localhost:8080
+  ```Bash
+  loading AgentConfig`
+  recording snapshots of ...
+  ```
 
 ----
 
+* Browse to http://localhost:8080  
 * Navigate through the application
 * Watch the console for generated tests
 * Stop the server and examine the generated tests in the workspace target folder
@@ -90,12 +107,14 @@
 
 * Annotate `PriceCalculator.applyUnfairCharges` with `@Recorded`
 * Start the launch script, the messages should be:
-  * `loading AgentConfig`
-  * `recording snapshots of ...`
-* Browse to http://localhost:8080
+  ```Bash
+  loading AgentConfig
+  recording snapshots of ...
+  ```
 
 ----
 
+* Browse to http://localhost:8080
 * Navigate through the application
 * Watch the console for generated tests
 * Stop the server and examine the generated tests in the workspace target folder
@@ -127,19 +146,20 @@
 
 * Annotate `PriceCalculator.computePrice` with `@Recorded`
 * Start the launch script, the messages should be:
-  * `loading AgentConfig`
-  * `recording snapshots of ...`
+  ```Bash
+  loading AgentConfig
+  recording snapshots of ...
+  ```
+
+----
+
 * Browse to http://localhost:8080
-
-----
-
 * Navigate through the application
-* Watch the console for generated tests
-* Stop the server and examine the generated tests in the workspace target folder
+* Use fast motion and generate at least 100 tests
+* Examine the tests
 
 ----
 
-* Use fast motion and generate at least 100 tests
 * <div class="tests-red">Unfortunately - some tests will fail</div>
 * Analyze the test and the source code, what did we miss to record?
 
@@ -176,20 +196,24 @@
 
 * Annotate `PriceCalculator.order` with `@Recorded`
 * Start the launch script, the messages should be:
-  * `loading AgentConfig`
-  * `recording snapshots of ...`
-* Browse to http://localhost:8080
+  ```Bash
+  loading AgentConfig
+  recording snapshots of ...
+  ```
 
 ----
 
+* Browse to http://localhost:8080
 * Navigate through the application and order some products
-* Watch the console for generated tests
-* Stop the server and examine the generated tests in the workspace target folder
+* Examine the generated tests
 
 ----
 
 * <div class="tests-green">The tests are green</div>
 * Change the timestamp argument in some of your tests
+
+----
+
 * <div class="tests-green">Astonishingly the tests stay green</div>
 * You see: This green state is treacherous
 * Analyze what the recorded method does and analyze which aspects of the method were not recorded
@@ -197,8 +221,8 @@
 ----
 
 * The missing part is output
-* As you learned testrecorder stores the state before and after execution of the recorded method
-* Sometimes a method does write state to external systems, e.g.
+* As you learned testrecorder captures the state before and after execution of the recorded method
+* Sometimes a method writes state to external systems, e.g.
   * writing files (that could have been edited)
   * requesting user input
   * notifying web services
