@@ -5,3 +5,11 @@
 * Accumulate all dependencies (these dependencies will be sufficient for starting with classpath or in IDEs)
 
 `mvn -Poffline dependency:copy-dependencies`
+
+* generate tasks.pdf
+
+`reveal-md tasks.md --css tasks.css --print`
+
+* start presentation
+
+`reveal-md slides.md --theme theme/andrena.css`
