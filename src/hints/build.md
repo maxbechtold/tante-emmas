@@ -8,7 +8,7 @@
 
 * generate tasks.pdf
 
-`reveal-md tasks.md --css tasks.css --print`
+`reveal-md lessons.md --css lessons.css --print`
 
 * start presentation
 
