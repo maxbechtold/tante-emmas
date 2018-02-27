@@ -1,0 +1,33 @@
+besser erklären:
+ target/generated als Source aufnehmen
+  
+IntelliJ kann Tests nicht erkennen oder ausführen:
+https://stackoverflow.com/questions/45040070/junit4-and-junit5-tests-not-running-in-intellij
+es muss genau die Version der vintage/jupiter engine und von platform-launcher eingetragen sein, die der in IntelliJ verpackten entspricht, siehe INSTALLDIR/plugins
+
+Bugs:
+NPE wenn man nicht globale Felder @Global annotiert
+Exception wenn @Recorded Methode mit @Input annotiert wird
+
+Nutzung/UX:
+computePrice und computeFairPrice zu ähnlich, führt zu falscher Annotation in Record Simple Methods
+getInputMethods als a.b.c.D#m oder a.b.c.D.m eingeben? Doku!
+Javadoc/Sourcen mitliefern
+Fields/Field... führt auf java Reflection, bremst aus
+
+Lessons learned vermitteln:
+Output-Aufgabe: unintuitiv, den Test zu manipulieren, um roten Test zu verursachen
+  besser Code manipulieren, z.B. write-Parameter (order.txt kaputt)
+Input-abhängige Tests initial rot, Output-abhängige Tests initial grün, warum?
+  vgl. mit Mock-Stubbing und -Verification. Analoges Verhalten, wenn diese in Tests nicht korrekt gemacht werden
+
+Ideen:
+Wie fixe Teilnehmer bei der Stange halten?
+  Bonusaufgaben?
+  Testrecorder Code Schmankerl (für tieferes Verständnis) verweisen
+  Custom De/Serializer Problem stellen
+
+Finale Aufgabe:
+Was ist die Idee, was sollen die TN lernen?
+  Mögliche Use cases für Testrecorder, z.B. Test-Driven Bug Fixing, angepassten Testfall "sichern" (target/generated -> src/test, unnötige asserts entfernen), dadurch "rote" Testfälle prüfen (ob es an gerade korrigiertem Verhalten liegt)
+Alternative Aufgabe stellen?
